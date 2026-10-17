@@ -1,10 +1,10 @@
 /* Simulateur « Acheter ou louer après 40 ans » — interface d'outil, couleurs de la chaîne. */
 
-@font-face { font-family: "Inter"; src: url("fonts/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("fonts/inter-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("fonts/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("fonts/inter-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "Fraunces"; src: url("fonts/fraunces-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../fonts/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../fonts/inter-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../fonts/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("../fonts/inter-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Fraunces"; src: url("../fonts/fraunces-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 
 /* Mise en page : barre de titre, puis deux panneaux côte à côte (réglages | résultats), volets repliables dessous. */
 :root {
@@ -47,6 +47,10 @@ a { color: var(--location); text-underline-offset: 2px; }
 .barre h1 { margin: 0; font: 600 21px/1.15 var(--f-marque); letter-spacing: -.005em; }
 .sous-titre { margin: 2px 0 0; font-size: 13.5px; color: #C9CFD8; }
 .sous-titre a { color: #F0A452; }
+.sous-titre .lien-chaine { color: #F4EFE6; font-weight: 600; text-decoration: none; }
+.sous-titre .lien-chaine:hover, .sous-titre .lien-chaine:focus-visible { text-decoration: underline; }
+.lien-logo { display: block; flex: none; border-radius: 9px; }
+.lien-logo:focus-visible { outline: 2px solid #F0A452; outline-offset: 3px; }
 .confiance { margin: 0; display: inline-flex; align-items: center; gap: 7px; font-size: 13.5px; color: #C9CFD8; }
 .confiance svg { width: 16px; height: 16px; color: #8FD1B0; }
 

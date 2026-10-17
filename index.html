@@ -3,147 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Simulateur acheter ou louer après 40 ans</title>
-<meta name="description" content="Comparez votre patrimoine à la retraite si vous achetez votre logement ou si vous restez locataire en plaçant la différence. Gratuit, sans inscription, calculé sur votre appareil.">
-<meta property="og:title" content="Acheter ou louer après 40 ans : le simulateur">
-<meta property="og:description" content="Le simulateur de la vidéo « Acheter ou louer après 40 ans : le vrai calcul ». Gratuit, sans inscription.">
+<title>Le Vrai Calcul | Finance : simulateurs gratuits</title>
+<meta name="description" content="Les grandes décisions d’argent, calculées pour de vrai. Les simulateurs gratuits de la chaîne Le Vrai Calcul : sans inscription, calculés sur votre appareil.">
+<meta property="og:title" content="Le Vrai Calcul | Finance">
+<meta property="og:description" content="Les grandes décisions d’argent, calculées pour de vrai. Simulateurs gratuits, sans inscription.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#1E2A3A">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231E2A3A'/%3E%3Cpath d='M7 16 16 8l9 8v9H7z' fill='none' stroke='%23F0A452' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/fraunces-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="accueil.css">
 </head>
 <body>
-<header class="barre">
-  <div class="largeur barre-contenu">
-    <div class="marque">
-      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="currentColor"/><path d="M7 16 16 8l9 8v9H7z" fill="none" stroke="#F0A452" stroke-width="2.4" stroke-linejoin="round"/></svg>
-      <div>
-        <h1>Acheter ou louer après 40 ans</h1>
-        <p class="sous-titre">Le simulateur de la vidéo<span id="lien-video-zone" hidden>, <a id="lien-video" href="#">à voir ici</a></span></p>
-      </div>
-    </div>
-    <p class="confiance"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 2.5 4v3.6c0 3.2 2.3 6 5.5 6.9 3.2-.9 5.5-3.7 5.5-6.9V4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Calculé sur votre appareil, rien n'est envoyé</p>
-  </div>
+<header class="entete largeur">
+  <a class="marque" href="./">
+    <img class="logo" src="favicon.svg" alt="" width="44" height="44">
+    <span class="nom">Le Vrai Calcul <span class="finance">| Finance</span></span>
+  </a>
 </header>
 
-<main class="largeur appli">
-  <form id="formulaire" class="panneau reglages" novalidate autocomplete="off" aria-label="Vos chiffres">
-    <div class="entete-panneau">
-      <h2>Vos chiffres</h2>
-      <p class="mode" id="mode"><span class="pastille-mode" id="mode-texte">Exemple de Julien</span><button type="button" class="petit-bouton" id="reinitialiser" hidden>Remettre l'exemple</button></p>
-    </div>
-    <p class="consigne" id="consigne">Les valeurs de départ sont celles de Julien, 42&nbsp;ans, dans la vidéo. Bougez les curseurs ou tapez vos chiffres.</p>
+<main class="largeur">
+  <section class="intro" aria-labelledby="titre">
+    <h1 id="titre">Les grandes décisions d’argent, <span class="souligne">calculées pour&nbsp;de&nbsp;vrai.</span></h1>
+    <p class="chapo">Une chaîne YouTube et des simulateurs gratuits pour refaire le calcul avec vos propres chiffres. Chiffres sourcés, sans inscription.</p>
+    <p class="themes">Acheter · Louer · Investir · Transmettre</p>
+  </section>
 
-    <div class="groupe" id="groupe-base"></div>
-
-    <div class="ligne ligne-duree">
-      <span class="libelle" id="duree-titre">Durée du crédit</span>
-      <div class="segments" role="radiogroup" aria-labelledby="duree-titre">
-        <label><input type="radio" name="duree" value="15"><span>15 ans</span></label>
-        <label><input type="radio" name="duree" value="20"><span>20 ans</span></label>
-        <label><input type="radio" name="duree" value="25"><span>25 ans</span></label>
-      </div>
-    </div>
-    <div class="groupe" id="groupe-credit"></div>
-
-    <div class="groupe decisif">
-      <h3>Les deux chiffres qui décident</h3>
-      <p class="consigne">Personne ne les connaît à l'avance&nbsp;: essayez aussi une valeur prudente.</p>
-      <div id="groupe-decisif"></div>
-    </div>
-
-    <details class="affiner" id="affiner">
-      <summary>Affiner les hypothèses</summary>
-      <div class="groupe" id="groupe-affiner"></div>
-    </details>
-  </form>
-
-  <section class="panneau resultats" id="resultats" aria-labelledby="resultats-titre" tabindex="-1">
-    <h2 id="resultats-titre">Votre patrimoine à <span id="r-age">65</span>&nbsp;ans</h2>
-
-    <div class="duel" aria-live="polite">
-      <div class="tuile tuile-achat" id="tuile-achat">
-        <p class="tuile-nom"><i class="point-serie achat" aria-hidden="true"></i>Si vous achetez <span class="devant" hidden>Devant</span></p>
-        <p class="tuile-somme" id="r-achat">—</p>
-        <p class="tuile-detail" id="r-achat-detail"></p>
-      </div>
-      <div class="tuile tuile-location" id="tuile-location">
-        <p class="tuile-nom"><i class="point-serie location" aria-hidden="true"></i>Si vous louez et placez <span class="devant" hidden>Devant</span></p>
-        <p class="tuile-somme" id="r-location">—</p>
-        <p class="tuile-detail" id="r-location-detail"></p>
-      </div>
-    </div>
-    <p class="verdict" id="r-verdict"></p>
-
-    <figure class="graphique">
-      <div class="graphique-tete">
-        <figcaption>Année par année</figcaption>
-        <div class="legende" aria-hidden="true"><span><i class="point-serie achat"></i>Acheter</span><span><i class="point-serie location"></i>Louer et placer</span></div>
-      </div>
-      <div class="zone-graphique" id="zone-graphique">
-        <svg id="graphique" role="img" aria-labelledby="graphique-desc"><desc id="graphique-desc"></desc></svg>
-        <div class="bulle" id="bulle" hidden></div>
-      </div>
-    </figure>
-
-    <dl class="chiffres-cles" id="chiffres-cles"></dl>
-
-    <ul class="alertes" id="alertes"></ul>
+  <section class="simulateurs" aria-labelledby="titre-simulateurs">
+    <h2 id="titre-simulateurs">Les simulateurs</h2>
+    <a class="carte" href="acheter-ou-louer/">
+      <span class="etiquette">Vidéo n° 1</span>
+      <span class="carte-titre">Acheter ou louer après 40&nbsp;ans</span>
+      <span class="carte-texte">Votre patrimoine à la retraite si vous achetez votre logement, ou si vous restez locataire en plaçant la différence.</span>
+      <span class="carte-action">Faire le calcul <span aria-hidden="true">→</span></span>
+    </a>
   </section>
 </main>
 
-<section class="largeur annexes">
-  <details class="volet">
-    <summary>Tableau année par année</summary>
-    <div class="volet-contenu">
-      <div class="tableau-defile">
-        <table id="tableau">
-          <thead><tr><th scope="col">Âge</th><th scope="col">Si vous achetez</th><th scope="col">Si vous louez et placez</th><th scope="col">Devant</th></tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </details>
-  <details class="volet">
-    <summary>Comment le calcul est fait</summary>
-    <div class="volet-contenu">
-      <ul class="liste">
-        <li><strong>Si vous achetez&nbsp;:</strong> l'apport paie les frais d'achat et une partie du prix, le reste est emprunté. Vous payez la mensualité, l'assurance, la taxe foncière, les charges et l'entretien. Votre patrimoine, c'est la valeur du logement, moins ce qu'il reste à rembourser, plus ce que vous avez pu placer les mois où vous payiez moins qu'un loyer.</li>
-        <li><strong>Si vous louez et placez&nbsp;:</strong> l'apport est placé dès le départ. Chaque mois où l'acheteur paie plus que votre loyer, vous placez la différence.</li>
-        <li>Le calcul est fait mois par mois. Les loyers et les dépenses augmentent chaque année du pourcentage choisi. Les résultats sont arrondis au millier d'euros.</li>
-        <li><strong>Pas compté&nbsp;:</strong> les frais de revente du logement, les impôts et les frais sur les placements, les aides et les prêts aidés. L'assurance est calculée sur le montant emprunté au départ, comme dans la plupart des contrats de banque.</li>
-      </ul>
-    </div>
-  </details>
-  <details class="volet">
-    <summary>Sources</summary>
-    <div class="volet-contenu">
-      <ul class="liste sources">
-        <li>Taux moyens par durée, août 2026&nbsp;: <a href="https://lobservatoire.creditlogement.fr/wp-content/uploads/sites/2/2026/09/TDB_L_Observatoire_Credit_Logement_CSA_aout2026.pdf">Observatoire Crédit Logement/CSA</a></li>
-        <li>Règle des 35&nbsp;% assurance comprise&nbsp;: <a href="https://www.economie.gouv.fr/files/files/directions_services/hcsf/HCSF%20-%20Communiqu%C3%A9%20de%20presse%20du%20mardi%209%20juin%202026.pdf">Haut Conseil de stabilité financière, juin 2026</a></li>
-        <li>Questionnaire de santé (loi Lemoine)&nbsp;: <a href="https://www.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE14708">réponse du gouvernement du 21/07/2026</a></li>
-        <li>Pension médiane égale à 75&nbsp;% du dernier revenu&nbsp;: <a href="https://drees.solidarites-sante.gouv.fr/sites/default/files/2026-03/ER1369_Niveau%20vie%20retrait%C3%A9s.pdf">DREES, Études et résultats n°&nbsp;1369, mars 2026</a></li>
-        <li>Prix des logements anciens&nbsp;: <a href="https://insee.fr/fr/statistiques/9040119">Insee, 2<sup>e</sup>&nbsp;trimestre 2026</a></li>
-        <li>Rendement du MSCI World en euros&nbsp;: <a href="https://www.msci.com/documents/10199/890dd84d-3750-4656-87f2-1229ed5a5d6e">fiche MSCI au 30/09/2026</a></li>
-      </ul>
-    </div>
-  </details>
-
-  <section class="newsletter" id="newsletter" hidden aria-labelledby="newsletter-titre">
-    <h2 id="newsletter-titre">Recevez le tableau détaillé</h2>
-    <p>Le fichier Excel avec tous les calculs, à modifier vous-même, puis un email à chaque nouvelle vidéo.</p>
-    <a class="bouton" id="newsletter-lien" href="#">Recevoir le tableau</a>
-  </section>
-
-  <p class="avertissement">Outil pédagogique, pas un conseil financier, immobilier ou juridique personnalisé. Les résultats dépendent des hypothèses choisies&nbsp;: les prix, les loyers et les placements peuvent évoluer autrement, et un placement en actions peut perdre de la valeur. Avant de décider, demandez des offres chiffrées à votre banque. Données mises à jour le 16&nbsp;octobre 2026.</p>
-</section>
-
-<div class="barre-mobile" id="barre-mobile" hidden>
-  <a href="#resultats"><span>À <b id="b-age">65</b>&nbsp;ans</span><span><i class="point-serie achat" aria-hidden="true"></i>Acheter <b id="b-achat">—</b></span><span><i class="point-serie location" aria-hidden="true"></i>Louer <b id="b-location">—</b></span></a>
-</div>
-
-<script src="simulateur.js"></script>
+<footer class="pied largeur">
+  <p>Outils pédagogiques, pas un conseil financier personnalisé. Les calculs se font sur votre appareil : vos chiffres ne sont envoyés nulle part.</p>
+  <p>© 2026 Le Vrai Calcul</p>
+</footer>
 </body>
 </html>

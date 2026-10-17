@@ -10,13 +10,13 @@ const CONFIG = {
 };
 
 /* Taux moyens des crédits immobiliers par durée (taux fixes, hors assurance).
-   Source : Observatoire Crédit Logement/CSA, tableau de bord d'août 2026. */
-const TAUX_MOYENS = { 15: 3.14, 20: 3.27, 25: 3.35 };
+   Source : Observatoire Crédit Logement/CSA, septembre 2026 (publié le 30/09/2026). */
+const TAUX_MOYENS = { 15: 3.21, 20: 3.39, 25: 3.45 };
 
 /* L'exemple de Julien (exemple fictif de la vidéo). */
 const JULIEN = {
   age: 42, ageFin: 65, loyer: 1050, revenu: 3600,
-  prix: 250000, apport: 68750, duree: 25, taux: 3.35,
+  prix: 250000, apport: 68750, duree: 25, taux: 3.45,
   hausseImmo: 1.5, rendement: 5,
   frais: 7.5, assurance: 0.35, taxeFonciere: 1100, charges: 1500, hausseLoyers: 2
 };
@@ -28,7 +28,7 @@ const CHAMPS = [
   { id: 'loyer', groupe: 'base', label: 'Loyer actuel, hors charges', unite: '€/mois', min: 0, max: 20000, curseur: [300, 3000, 10], fmt: 'euros' },
   { id: 'prix', groupe: 'base', label: 'Prix du logement', unite: '€', min: 10000, max: 10000000, curseur: [50000, 1000000, 5000], fmt: 'euros' },
   { id: 'apport', groupe: 'base', label: 'Votre apport', unite: '€', min: 0, max: 10000000, curseur: [0, 500000, 1000], fmt: 'euros' },
-  { id: 'taux', groupe: 'credit', label: 'Taux du crédit', unite: '%/an', min: 0, max: 15, curseur: [0.5, 6, 0.01], fmt: 'pourcent', indice: 'Taux moyen pour cette durée en août 2026. Mettez celui de votre banque si vous l’avez.' },
+  { id: 'taux', groupe: 'credit', label: 'Taux du crédit', unite: '%/an', min: 0, max: 15, curseur: [0.5, 6, 0.01], fmt: 'pourcent', indice: 'Taux moyen pour cette durée en septembre 2026. Mettez celui de votre banque si vous l’avez.' },
   { id: 'hausseImmo', groupe: 'decisif', label: 'Évolution du prix du logement', unite: '%/an', min: -10, max: 15, curseur: [-3, 5, 0.1], fmt: 'pourcent', indice: 'Repère : −0,8 % sur un an pour l’ancien (Insee, 2e trimestre 2026).' },
   { id: 'rendement', groupe: 'decisif', label: 'Rendement de vos placements', unite: '%/an', min: -10, max: 20, curseur: [0, 10, 0.1], fmt: 'pourcent', indice: 'Repère : 6,67 % par an depuis 2000 pour l’indice mondial MSCI World, avec une chute de 53,6 % entre 2001 et 2009.' },
   { id: 'revenu', groupe: 'affiner', label: 'Vos revenus nets', unite: '€/mois', min: 0, max: 200000, curseur: [0, 15000, 50], fmt: 'euros', facultatif: true, indice: 'Pour la règle des 35 % des banques. Laissez vide pour l’ignorer.' },
@@ -114,13 +114,17 @@ function simuler(p, hausseImmo = p.hausseImmo) {
   };
 }
 
-/* Âge à partir duquel l'achat reste devant jusqu'à la fin (ou null). */
+/* Âge (arrondi) où l'achat passe devant pour de bon, ou null.
+   Le croisement est situé entre deux fins d'année par interpolation, comme sur le graphique. */
 function croisement(annees) {
   const n = annees.length;
   if (annees[n - 1].A <= annees[n - 1].B) return null;
   let i = n - 1;
   while (i > 0 && annees[i - 1].A > annees[i - 1].B) i--;
-  return i === 0 ? { age: annees[0].age, depart: true } : { age: annees[i].age, i };
+  if (i === 0) return { age: annees[0].age, depart: true };
+  const a = annees[i - 1], b = annees[i], d0 = a.A - a.B, d1 = b.A - b.B;
+  const exact = a.age + (d0 / (d0 - d1)) * (b.age - a.age);
+  return { age: Math.round(exact), exact, i };
 }
 
 /* Hausse annuelle des prix qui met l'achat et la location à égalité. */
@@ -226,7 +230,7 @@ function afficherResultats(p, s, c) {
   const ecart = Math.abs(s.A - s.B), echelle = Math.max(Math.abs(s.A), Math.abs(s.B), 1);
   let v;
   if (ecart / echelle < 0.02) v = `Presque à égalité : <span class="chiffre">${milliers(ecart)}</span> d’écart.`;
-  else if (achatDevant) v = c.depart ? `L’achat est devant du début à la fin, avec <span class="chiffre">${milliers(ecart)}</span> d’écart.` : `L’achat passe devant à ${NB0.format(c.age)} ans et finit avec <span class="chiffre">${milliers(ecart)}</span> d’avance.`;
+  else if (achatDevant) v = c.depart ? `L’achat est devant du début à la fin, avec <span class="chiffre">${milliers(ecart)}</span> d’écart.` : `L’achat passe devant vers ${NB0.format(c.age)} ans et finit avec <span class="chiffre">${milliers(ecart)}</span> d’avance.`;
   else v = `${s.annees.every(a => a.B >= a.A) ? 'La location reste devant' : 'La location finit devant'}, avec <span class="chiffre">${milliers(ecart)}</span> d’avance à ${ageFin} ans.`;
   $('r-verdict').innerHTML = v;
 
@@ -252,7 +256,7 @@ function afficherResultats(p, s, c) {
     if (avant60 && sous200) ligne('ok', `Pas de questionnaire de santé (loi Lemoine) : le crédit finit avant 60 ans et la part assurée ne dépasse pas 200 000 €.${s.finCredit >= 59 ? ' De justesse : vérifiez avec votre date de naissance.' : ''}`);
     else ligne('attention', `Questionnaire de santé probable : la loi Lemoine n’en dispense que si le crédit finit avant 60 ans et si la part assurée ne dépasse pas 200 000 €.`);
     if (te !== null && te > 35) ligne('attention', `La mensualité dépasse 35 % de vos revenus : les banques risquent de refuser le crédit.`);
-    if (te !== null && s.finCredit > p.ageFin) ligne('info', `Si votre pension vaut 75 % de vos revenus (la médiane en France), la mensualité en prendrait ${pourcent(100 * (s.m + s.assurMois) / (p.revenu * 0.75))} à la retraite.`);
+    if (te !== null && s.finCredit > p.ageFin) ligne('info', `Si votre pension vaut 75 % de vos revenus (environ la médiane en France), la mensualité en prendrait ${pourcent(100 * (s.m + s.assurMois) / (p.revenu * 0.75))} à la retraite.`);
   }
   if (p.rendement > 6.67) ligne('info', 'Votre rendement dépasse la moyenne de l’indice mondial depuis 2000 (6,67 % par an) : essayez aussi une valeur plus prudente.');
   $('alertes').innerHTML = L.join('');

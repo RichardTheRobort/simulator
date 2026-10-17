@@ -26,7 +26,7 @@ Il compare le patrimoine à l’âge de la retraite dans deux cas : acheter son 
 Dans `acheter-ou-louer/simulateur.js`, en haut du fichier :
 
 - `CONFIG.lienVideo` : l’adresse de la vidéo YouTube, quand elle sera en ligne (le lien apparaît alors en haut de la page) ;
-- `CONFIG.lienNewsletter` : la page d’inscription à la newsletter (le bloc d’inscription apparaît alors) ;
+- `CONFIG.formulaireEmail` : l’adresse (« action ») du formulaire Brevo ; l’encadré « Recevez la check-list » apparaît alors sous les résultats. Champ email + case séparée, non cochée, pour la lettre (attribut Brevo `NEWSLETTER`) ;
 - `TAUX_MOYENS` et `JULIEN.taux` : les taux moyens par durée (Observatoire Crédit Logement/CSA), avec le mois dans l’aide de la case « Taux du crédit », la source dans `index.html` et la date en bas de page.
 
 ### Le calcul

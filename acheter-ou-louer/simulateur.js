@@ -6,7 +6,7 @@
 /* ---------- Réglages à compléter plus tard ---------- */
 const CONFIG = {
   lienVideo: '',       // adresse de la vidéo YouTube, quand elle sera en ligne
-  lienNewsletter: ''   // page d'inscription à la newsletter, quand elle existera
+  formulaireEmail: '' // adresse du formulaire Brevo (« action » du formulaire intégré), quand le compte existera
 };
 
 /* Taux moyens des crédits immobiliers par durée (taux fixes, hors assurance).
@@ -414,7 +414,7 @@ function init() {
   new ResizeObserver(() => { if (zone.clientWidth !== largeur) { largeur = zone.clientWidth; dessiner(); } }).observe(zone);
 
   if (CONFIG.lienVideo) { $('lien-video').href = CONFIG.lienVideo; $('lien-video-zone').hidden = false; }
-  if (CONFIG.lienNewsletter) { $('newsletter-lien').href = CONFIG.lienNewsletter; $('newsletter').hidden = false; }
+  if (CONFIG.formulaireEmail) { $('newsletter-form').action = CONFIG.formulaireEmail; $('newsletter').hidden = false; }
 
   const barre = $('barre-mobile');
   if ('IntersectionObserver' in window) {

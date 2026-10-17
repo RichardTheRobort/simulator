@@ -132,9 +132,19 @@
   </details>
 
   <section class="newsletter" id="newsletter" hidden aria-labelledby="newsletter-titre">
-    <h2 id="newsletter-titre">Recevez le tableau détaillé</h2>
-    <p>Le fichier Excel avec tous les calculs, à modifier vous-même, puis un email à chaque nouvelle vidéo.</p>
-    <a class="bouton" id="newsletter-lien" href="#">Recevoir le tableau</a>
+    <h2 id="newsletter-titre">Recevez la check-list «&nbsp;Acheter après 40&nbsp;ans&nbsp;»</h2>
+    <p>Les 8 points à vérifier avant de signer, sur une page (PDF), chaque chiffre sourcé.</p>
+    <form id="newsletter-form" method="post" action="#">
+      <label class="libelle-email" for="newsletter-email">Votre adresse email</label>
+      <div class="ligne-email">
+        <input type="email" id="newsletter-email" name="EMAIL" autocomplete="email" required placeholder="prenom@exemple.fr">
+        <button type="submit" class="bouton">Recevoir la check-list</button>
+      </div>
+      <label class="case-lettre"><input type="checkbox" name="NEWSLETTER" value="1"> Je veux aussi recevoir le prochain vrai calcul par email (désinscription en un clic).</label>
+      <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="piege">
+      <input type="hidden" name="locale" value="fr">
+      <p class="mention-email">Votre adresse sert seulement à vous envoyer la check-list et, si vous cochez la case, la lettre. Elle n'est jamais revendue.</p>
+    </form>
   </section>
 
   <p class="avertissement">Outil pédagogique, pas un conseil financier, immobilier ou juridique personnalisé. Les résultats dépendent des hypothèses choisies&nbsp;: les prix, les loyers et les placements peuvent évoluer autrement, et un placement en actions peut perdre de la valeur. Avant de décider, demandez des offres chiffrées à votre banque. Données mises à jour le 17&nbsp;octobre 2026.</p>

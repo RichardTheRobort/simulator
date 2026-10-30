@@ -10,57 +10,53 @@
 <meta property="og:description" content="Les grandes décisions d’argent, calculées pour de vrai. Vidéos et simulateurs gratuits, sans inscription.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://levraicalcul.fr/identite/miniature-video-1-A.jpg">
-<meta name="theme-color" content="#1E2A3A">
+<meta name="theme-color" content="#141D29">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/fraunces-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="identite/julien-soir.jpg" as="image">
 <link rel="stylesheet" href="accueil.css">
 </head>
-<body>
+<body class="accueil">
 <header class="entete">
   <div class="largeur entete-contenu">
-    <a class="marque" href="./">
-      <img class="logo" src="favicon.svg" alt="" width="40" height="40">
-      <span class="nom">Le Vrai Calcul <span class="finance">| Finance</span></span>
-    </a>
-    <nav class="menu" aria-label="Menu principal">
-      <ul><li><a href="./" aria-current="page">Accueil</a></li><li><a href="#videos">Vidéos</a></li><li><a href="#simulateurs">Simulateurs</a></li><li><a class="bouton-yt" href="https://www.youtube.com/@levraicalcul"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7.5v9l7.5-4.5z" fill="currentColor"/></svg>La chaîne</a></li></ul>
-    </nav>
+    <a class="marque" href="./" aria-label="Le Vrai Calcul, accueil"><img class="logo" src="favicon.svg" alt="" width="38" height="38"><span class="nom">Le Vrai Calcul</span></a>
+    <nav class="menu" aria-label="Menu principal"><ul><li><a href="./" aria-current="page">Accueil</a></li><li><a href="#videos">Vidéos</a></li><li><a href="#simulateurs">Simulateurs</a></li><li><a href="https://www.youtube.com/@levraicalcul">YouTube</a></li></ul></nav>
   </div>
 </header>
-
 <main>
   <section class="hero">
-    <div class="largeur hero-grille">
-      <div>
-        <p class="themes">Acheter · Louer · Investir · Transmettre</p>
-        <h1>Les grandes décisions d’argent, <span class="souligne">calculées pour&nbsp;de&nbsp;vrai.</span></h1>
-        <p class="chapo">Une vidéo pour comprendre, un simulateur pour refaire le calcul avec vos chiffres. Gratuit, sourcé, sans inscription.</p>
-        <div class="boutons">
-          <a class="btn btn-plein" href="acheter-ou-louer/">Faire mon calcul <span aria-hidden="true">→</span></a>
-          <a class="btn btn-ligne" href="acheter-ou-louer-apres-40-ans/">Voir la vidéo</a>
-        </div>
+    <div class="largeur hero-contenu">
+      <p class="kicker">Vidéo n°&nbsp;1 · Acheter ou louer</p>
+      <h1>Les grandes décisions d’argent, <em>calculées pour&nbsp;de&nbsp;vrai.</em></h1>
+      <p class="chapo">Julien, 42&nbsp;ans, a versé plus de 160&nbsp;000&nbsp;€ de loyers. Acheter maintenant, ou rester locataire&nbsp;? On a fait le calcul jusqu’à 65&nbsp;ans.</p>
+      <div class="boutons">
+        <a class="btn btn-plein" href="acheter-ou-louer/">Faire mon calcul <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ligne" href="acheter-ou-louer-apres-40-ans/">Regarder la vidéo</a>
       </div>
-      <a class="hero-visuel" href="acheter-ou-louer-apres-40-ans/" aria-label="Voir la vidéo : Acheter ou louer après 40 ans">
-        <img src="identite/miniature-video-1-A.jpg" alt="" width="1280" height="720">
-        <span class="lecture" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7v10l8-5z" fill="currentColor"/></svg></span>
-        <span class="hero-legende">Nouvelle vidéo · Acheter ou louer après 40&nbsp;ans</span>
-      </a>
     </div>
   </section>
+
+  <div class="largeur">
+    <ul class="chiffres">
+      <li><b>10&nbsp;min</b><span>pour comprendre</span></li>
+      <li><b>10&nbsp;sources</b><span>publiques, citées</span></li>
+      <li><b>0&nbsp;inscription</b><span>simulateur gratuit</span></li>
+    </ul>
+  </div>
 
   <section class="largeur bloc" id="videos" aria-labelledby="t-videos">
     <div class="bloc-tete"><h2 id="t-videos">Les vidéos</h2><a class="voir-tout" href="https://www.youtube.com/@levraicalcul">Toute la chaîne →</a></div>
     <article class="video-carte">
-      <a class="video-image" href="acheter-ou-louer-apres-40-ans/"><img src="identite/miniature-video-1-A.jpg" alt="" width="1280" height="720" loading="lazy"><span class="duree">10:04</span></a>
+      <a class="video-image" href="acheter-ou-louer-apres-40-ans/"><img src="identite/miniature-video-1-A.jpg" alt="Miniature : 160 000 € de loyers… pour rien ?" width="1280" height="720" loading="lazy"><span class="duree">10:04</span></a>
       <div class="video-texte">
-        <span class="etiquette">Vidéo n° 1</span>
+        <p class="kicker">Vidéo n°&nbsp;1</p>
         <h3><a href="acheter-ou-louer-apres-40-ans/">Acheter ou louer après 40&nbsp;ans&nbsp;: le vrai calcul</a></h3>
-        <p>Julien, 42&nbsp;ans, a versé plus de 160&nbsp;000&nbsp;€ de loyers. Acheter maintenant, ou rester locataire et placer la différence&nbsp;? Le match complet jusqu’à 65&nbsp;ans.</p>
-        <ul class="liens-video">
-          <li><a href="acheter-ou-louer-apres-40-ans/">▶ Regarder et lire l’article</a></li>
-          <li><a href="acheter-ou-louer/">⚙ Le simulateur</a></li>
-        </ul>
+        <p>Le match complet entre acheter et rester locataire en plaçant la différence, jusqu’à la retraite. Et le détail propre à la quarantaine&nbsp;: l’âge à la fin du crédit.</p>
+        <div class="liens-video">
+          <a class="btn btn-petit" href="acheter-ou-louer-apres-40-ans/">Regarder et lire l’article</a>
+          <a class="lien" href="acheter-ou-louer/">Le simulateur →</a>
+        </div>
       </div>
     </article>
   </section>
@@ -69,13 +65,11 @@
     <div class="bloc-tete"><h2 id="t-simus">Les simulateurs</h2></div>
     <div class="grille-simus">
       <a class="carte" href="acheter-ou-louer/">
-        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5M5.5 9.5V20h13V9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="carte-titre">Acheter ou louer</span>
         <span class="carte-texte">Votre patrimoine à la retraite si vous achetez, ou si vous restez locataire en plaçant la différence.</span>
-        <span class="carte-action">Faire le calcul <span aria-hidden="true">→</span></span>
+        <span class="carte-action">Faire le calcul →</span>
       </a>
-      <div class="carte carte-bientot" aria-disabled="true">
-        <span class="icone" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18 9.5 12l3.5 3.5L20 8m0 0h-5m5 0v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="carte carte-bientot">
         <span class="carte-titre">Investir</span>
         <span class="carte-texte">Le prochain vrai calcul est en préparation.</span>
         <span class="carte-action">Bientôt</span>
@@ -86,16 +80,16 @@
   <section class="largeur bloc" aria-labelledby="t-methode">
     <div class="bloc-tete"><h2 id="t-methode">Comment ça marche</h2></div>
     <ol class="trois">
-      <li><b>1</b><span class="t">Une décision</span><span>On prend une grande question d’argent et on la suit avec Julien, 42&nbsp;ans.</span></li>
-      <li><b>2</b><span class="t">Des chiffres sourcés</span><span>Chaque chiffre vient d’une source publique, citée sous la vidéo.</span></li>
-      <li><b>3</b><span class="t">Votre calcul</span><span>Vous refaites le calcul avec vos propres chiffres, gratuitement.</span></li>
+      <li><b>01</b><span class="t">Une décision</span><span>Une grande question d’argent, suivie avec Julien, 42&nbsp;ans.</span></li>
+      <li><b>02</b><span class="t">Des chiffres sourcés</span><span>Chaque chiffre vient d’une source publique, citée sous la vidéo.</span></li>
+      <li><b>03</b><span class="t">Votre calcul</span><span>Vous refaites le calcul avec vos propres chiffres, gratuitement.</span></li>
     </ol>
   </section>
 </main>
 
 <footer class="pied">
   <div class="largeur">
-    <p><a href="./">Accueil</a> · <a href="acheter-ou-louer-apres-40-ans/">Vidéo n° 1</a> · <a href="acheter-ou-louer/">Simulateur</a> · <a href="https://www.youtube.com/@levraicalcul">YouTube</a></p>
+    <p><a href="./">Accueil</a> · <a href="acheter-ou-louer-apres-40-ans/">Vidéo n°&nbsp;1</a> · <a href="acheter-ou-louer/">Simulateur</a> · <a href="https://www.youtube.com/@levraicalcul">YouTube</a></p>
     <p>Outils pédagogiques, pas un conseil financier personnalisé. Les calculs se font sur votre appareil.</p>
     <p>© 2026 Le Vrai Calcul</p>
   </div>

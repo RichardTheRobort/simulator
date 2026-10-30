@@ -54,3 +54,5 @@ h2 { margin: 0 0 18px; font: 600 15px/1.2 "Inter", sans-serif; letter-spacing: .
   .carte { padding: 22px 20px; }
 }
 @media (prefers-reduced-motion: reduce) { .carte { transition: none; } }
+.lien-article { margin: 16px 0 0; font-weight: 600; }
+.lien-article a { color: var(--ambre-texte); }
